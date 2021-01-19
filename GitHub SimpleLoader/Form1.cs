@@ -25,8 +25,6 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
-        string HWID;
-
         private void Form1_Load(object sender, EventArgs e)
         {
             HWID = System.Security.Principal.WindowsIdentity.GetCurrent().User.Value; //Changing the variable "HWID (String)" to the WindowsIdentity Value, you can use any other forms of HWID, you can even use MAC/IP (Not recommended)
@@ -38,9 +36,7 @@ namespace WindowsFormsApp2
         private void button1_Click(object sender, EventArgs e)
         {
             checkonline();
-            WebClient wb = new WebClient();
-            string HWIDLIST = wb.DownloadString("HWID List URL"); //Replace "HWID List URL" with your own URL to a RAW text (txt) file with all your wanted HWIDs [Example: http://myurl.com/HWID.txt]
-            if (HWIDLIST.Contains(textBox1.Text)) //You can add a "!" before the "HWIDLIST" and after the "if (" to make it into a blacklist HWID system instead of a whitelist HWID system
+            WebClient wb = new WebClient
             {
                 string mainpath = "C:\\Windows\\random.dll"; //You can change the path to wherever you want but just remember to use "\\" instead of just one "\"
                 wb.DownloadFile("DLL URL", mainpath); //Replace "DLL URL" with the URL to directly download your DLL [Example: http://myurl.com/MYDLL.dll]
